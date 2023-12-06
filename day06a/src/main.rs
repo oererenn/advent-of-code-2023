@@ -2,12 +2,6 @@ use std::fs::read_to_string;
 
 const FILENAME: &str = "src/input.txt";
 
-#[derive(Debug)]
-struct Race {
-    time: u32,
-    distance: u32,
-}
-
 fn main() {
     multiply_number_of_ways(FILENAME);
 }
@@ -24,7 +18,6 @@ fn multiply_number_of_ways(filename: &str) -> usize {
         .map(|s| s.parse().unwrap())
         .collect::<Vec<u32>>();
 
-
     let distances = lines
         .next()
         .unwrap()
@@ -33,15 +26,12 @@ fn multiply_number_of_ways(filename: &str) -> usize {
         .map(|s| s.parse().unwrap())
         .collect::<Vec<u32>>();
 
-    let races = times
+    let product: usize = times
         .into_iter()
         .zip(distances)
-        .map(|(time, distance)| Race { time, distance });
-
-    let product = races
-        .map(|race| {
-            (0..race.time)
-                .filter(|&hold_time| race.distance < (race.time - hold_time) * hold_time)
+        .map(|(time, distance)| {
+            (0..time)
+                .filter(|&hold_time| distance < (time - hold_time) * hold_time)
                 .count()
         })
         .product();
