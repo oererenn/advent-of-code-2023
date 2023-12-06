@@ -2,12 +2,6 @@ use std::fs::read_to_string;
 
 const FILENAME: &str = "src/input.txt";
 
-#[derive(Debug)]
-struct Race {
-    time: u64,
-    distance: u64,
-}
-
 fn main() {
     number_of_ways(FILENAME);
 }
@@ -16,33 +10,28 @@ fn number_of_ways(filename: &str) -> usize {
     let file = read_to_string(filename).unwrap();
     let mut lines = file.lines();
 
-    let time: u64 = lines
+    let time = lines
         .next()
         .unwrap()
         .split_whitespace()
-        .skip(1) // Skip the first element
-        .map(|s| s.trim()) // Trim each split string
+        .skip(1) 
+        .map(|s| s.trim()) 
         .collect::<String>()
-        .parse()
+        .parse::<u64>()  
         .unwrap();
 
-    let distance: u64 = lines
+    let distance = lines
         .next()
         .unwrap()
         .split_whitespace()
-        .skip(1) // Skip the first element
-        .map(|s| s.trim()) // Trim each split string
+        .skip(1)
+        .map(|s| s.trim())
         .collect::<String>()
-        .parse()
+        .parse::<u64>()  
         .unwrap();
 
-    let race = Race {
-        time: time,
-        distance: distance,
-    };
-
-    let count = (0..race.time)
-        .filter(|&hold_time| race.distance < (race.time - hold_time) * hold_time)
+    let count = (0..time)
+        .filter(|&hold_time| distance < (time - hold_time) * hold_time)
         .count();
 
     println!("{}", count);

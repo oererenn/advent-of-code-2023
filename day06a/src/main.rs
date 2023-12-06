@@ -16,22 +16,22 @@ fn multiply_number_of_ways(filename: &str) -> usize {
     let file = read_to_string(filename).unwrap();
     let mut lines = file.lines();
 
-    let times: Vec<u32> = lines
+    let times = lines
         .next()
         .unwrap()
         .split_whitespace()
-        .skip(1) // Skip the "Time:" label
+        .skip(1)
         .map(|s| s.parse().unwrap())
-        .collect();
+        .collect::<Vec<u32>>();
 
 
-    let distances: Vec<u32> = lines
+    let distances = lines
         .next()
         .unwrap()
         .split_whitespace()
-        .skip(1) // Skip the "Distance:" label
+        .skip(1)
         .map(|s| s.parse().unwrap())
-        .collect();
+        .collect::<Vec<u32>>();
 
     let races = times
         .into_iter()
