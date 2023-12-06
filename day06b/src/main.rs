@@ -9,10 +9,10 @@ struct Race {
 }
 
 fn main() {
-    multiply_number_of_ways(FILENAME);
+    number_of_ways(FILENAME);
 }
 
-fn multiply_number_of_ways(filename: &str) -> usize {
+fn number_of_ways(filename: &str) -> usize {
     let file = read_to_string(filename).unwrap();
     let mut lines = file.lines();
 
@@ -52,10 +52,10 @@ fn multiply_number_of_ways(filename: &str) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use crate::multiply_number_of_ways;
+    use crate::number_of_ways;
 
     #[test]
-    fn test_multiply_number_of_ways() {
-        assert_eq!(multiply_number_of_ways("src/test.txt"), 71503);
+    fn test_number_of_ways() {
+        assert_eq!(number_of_ways("src/test.txt"), 71503);
     }
 }
