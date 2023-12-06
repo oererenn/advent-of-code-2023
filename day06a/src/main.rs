@@ -24,6 +24,7 @@ fn multiply_number_of_ways(filename: &str) -> usize {
         .map(|s| s.parse().unwrap())
         .collect();
 
+
     let distances: Vec<u32> = lines
         .next()
         .unwrap()
