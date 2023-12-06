@@ -56,6 +56,6 @@ mod tests {
 
     #[test]
     fn test_multiply_number_of_ways() {
-        assert_eq!(multiply_number_of_ways("src/test.txt"), 288);
+        assert_eq!(multiply_number_of_ways("src/test.txt"), 71503);
     }
 }
